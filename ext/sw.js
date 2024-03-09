@@ -29,6 +29,12 @@ chrome.webNavigation.onCreatedNavigationTarget.addListener((details) => {
             details.url,
         );
         chrome.tabs.remove(details.tabId);
-        chrome.runtime.sendNativeMessage("native.app.id", { url: details.url });
+        chrome.runtime.sendNativeMessage(
+            "me.kuehle.open_in_firefox",
+            { url: details.url },
+            (response) => {
+                console.log(response);
+            },
+        );
     }
 });

@@ -1,0 +1,7 @@
+{
+    "name": "me.kuehle.open_in_firefox",
+    "description": "Open in Firefox",
+    "path": "C:\\code\\open-in-firefox\\app\\target\\debug\\app.exe",
+    "type": "stdio",
+    "allowed_origins": ["chrome-extension://iajapgoidjefnaekmbeinpnodonpdnaj/"]
+}
