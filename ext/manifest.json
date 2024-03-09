@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "open-in-firefox",
+    "version": "0.0.1",
+    "description": "Open all links from a given frame in Firefox",
+    "author": "Jan Kühle",
+    "homepage_url": "https://github.com/frigus02/",
+    "permissions": [
+        "webNavigation",
+        "nativeMessaging",
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "sw.js"
+    }
+}
