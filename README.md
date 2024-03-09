@@ -23,7 +23,7 @@ Opens external links from installed Chrome apps in the default browser.
 
         ```
         TODO
-        $ edit app/manifest.json and app/src/main.rs and change extension id with the one from step 1.3.
+        $ edit app/manifest.json and change extension id with the one from step 1.3.
         ```
 
     2. Build the extension

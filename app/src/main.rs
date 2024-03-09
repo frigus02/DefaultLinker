@@ -34,13 +34,6 @@ fn write_response(res: Response) -> Result<(), BoxError> {
 }
 
 fn main() -> Result<(), BoxError> {
-    let origin = std::env::args()
-        .nth(1)
-        .ok_or("1st arg must be caller origin")?;
-    if origin != "chrome-extension://iajapgoidjefnaekmbeinpnodonpdnaj/" {
-        Err("Invalid caller origin")?;
-    }
-
     let req = read_request()?;
     let result = if webbrowser::open(&req.url).is_ok() {
         0
