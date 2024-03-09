@@ -1,5 +1,5 @@
 [package]
-name = "open-in-firefox"
+name = "open-app-links-in-default-browser"
 version = "0.1.0"
 edition = "2021"
 

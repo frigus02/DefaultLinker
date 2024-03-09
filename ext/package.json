@@ -1,15 +1,10 @@
 {
-  "name": "open-in-firefox",
+  "name": "open-app-links-in-default-browser",
   "version": "0.0.1",
-  "description": "Open all links from a given frame in Firefox",
+  "description": "Open external Chrome app links in the default browser",
   "homepage": "https://github.com/frigus02/",
   "license": "MIT",
   "author": "Jan Kühle <jkuehle90@gmail.com> (https://kuehle.me)",
-  "scripts": {
-    "start": ""
-  },
-  "dependencies": {
-  },
   "devDependencies": {
     "prettier": "3.2.4"
   },

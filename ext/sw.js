@@ -25,12 +25,12 @@ chrome.tabs.query({ windowType: "app" }).then((tabs) => {
 chrome.webNavigation.onCreatedNavigationTarget.addListener((details) => {
     if (appTabs.has(details.sourceTabId)) {
         console.log(
-            "External URL opened from app. Opening in Firefox.",
+            "External URL opened from app --> open in default browser",
             details.url,
         );
         chrome.tabs.remove(details.tabId);
         chrome.runtime.sendNativeMessage(
-            "me.kuehle.open_in_firefox",
+            "me.kuehle.open_app_links_in_default_browser",
             { url: details.url },
             (response) => {
                 console.log(response);

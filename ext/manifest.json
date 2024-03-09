@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "open-in-firefox",
+    "name": "open-app-links-in-default-browser",
     "version": "0.0.1",
-    "description": "Open all links from a given frame in Firefox",
+    "description": "Open external Chrome app links in the default browser",
     "author": "Jan Kühle",
     "homepage_url": "https://github.com/frigus02/",
     "permissions": ["webNavigation", "nativeMessaging", "tabs"],

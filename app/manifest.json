@@ -1,7 +1,7 @@
 {
-    "name": "me.kuehle.open_in_firefox",
-    "description": "Open in Firefox",
-    "path": "C:\\code\\open-in-firefox\\app\\target\\debug\\app.exe",
+    "name": "me.kuehle.open_app_links_in_default_browser",
+    "description": "Open external Chrome app links in the default browser",
+    "path": "C:\\code\\open-app-links-in-default-browser\\app\\target\\release\\open-app-links-in-default-browser.exe",
     "type": "stdio",
     "allowed_origins": ["chrome-extension://iajapgoidjefnaekmbeinpnodonpdnaj/"]
 }
