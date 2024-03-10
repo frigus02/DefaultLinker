@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release
+        working-directory: ./app
+      - run: zip ext.zip icon.png manifest.json sw.js
+        working-directory: ./ext
+      - uses: actions/upload-artifact@v4
+        with:
+          path: |
+            app/target/release/default_linker
+            ext/ext.zip
+          if-no-files-found: error
