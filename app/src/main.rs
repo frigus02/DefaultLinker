@@ -35,8 +35,8 @@ fn maybe_install() -> Result<bool, BoxError> {
 
     let path = std::env::current_exe()?;
     let manifest = Manifest {
-        name: "me.kuehle.open_app_links_in_default_browser",
-        description: "Open external Chrome app links in the default browser",
+        name: "me.kuehle.default_linker",
+        description: "Opens external links from installed Chrome apps in the default browser.",
         path: path.to_str().ok_or("exe path is not valid utf8")?.into(),
         type_: "stdio",
         allowed_origins: vec![format!("chrome-extension://{extension_id}/")],

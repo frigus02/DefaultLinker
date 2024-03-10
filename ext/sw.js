@@ -30,7 +30,7 @@ chrome.webNavigation.onCreatedNavigationTarget.addListener((details) => {
         );
         chrome.tabs.remove(details.tabId);
         chrome.runtime.sendNativeMessage(
-            "me.kuehle.open_app_links_in_default_browser",
+            "me.kuehle.default_linker",
             { url: details.url },
             (response) => {
                 console.log(response);

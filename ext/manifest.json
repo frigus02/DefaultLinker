@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "open-app-links-in-default-browser",
+    "name": "DefaultLinker",
     "version": "0.0.1",
-    "description": "Open external Chrome app links in the default browser",
+    "description": "Opens external links from installed Chrome apps in the default browser.",
     "author": "Jan Kühle",
     "homepage_url": "https://github.com/frigus02/",
     "permissions": ["webNavigation", "nativeMessaging", "tabs"],

@@ -1,7 +1,7 @@
 {
-  "name": "open-app-links-in-default-browser",
+  "name": "DefaultLinker",
   "version": "0.0.1",
-  "description": "Open external Chrome app links in the default browser",
+  "description": "Opens external links from installed Chrome apps in the default browser.",
   "homepage": "https://github.com/frigus02/",
   "license": "MIT",
   "author": "Jan Kühle <jkuehle90@gmail.com> (https://kuehle.me)",

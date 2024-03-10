@@ -53,6 +53,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "06ea2b9bc92be3c2baa9334a323ebca2d6f074ff852cd1d7b11064035cd3868f"
 
 [[package]]
+name = "default_linker"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "webbrowser",
+]
+
+[[package]]
 name = "form_urlencoded"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -164,15 +173,6 @@ name = "once_cell"
 version = "1.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92"
-
-[[package]]
-name = "open-app-links-in-default-browser"
-version = "0.1.0"
-dependencies = [
- "serde",
- "serde_json",
- "webbrowser",
-]
 
 [[package]]
 name = "percent-encoding"

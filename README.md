@@ -1,4 +1,4 @@
-# Open app links in default browser
+# DefaultLinker
 
 Opens external links from installed Chrome apps in the default browser.
 
@@ -28,7 +28,7 @@ Opens external links from installed Chrome apps in the default browser.
     2. Register native app:
 
         ```
-        $ open-app-links-in-default-browser[.exe] --install <extension_id>
+        $ default_linker[.exe] --install <extension_id>
         ```
 
         More details: https://developer.chrome.com/docs/extensions/develop/concepts/native-messaging#native-messaging-host-location
