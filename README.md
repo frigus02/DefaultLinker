@@ -9,8 +9,7 @@ Opens external links from installed Chrome apps in the default browser.
     1. Package extension
 
         ```
-        TODO
-        $ zip ext/...
+        $ cd ext/ && zip ext.zip manifest.json icon.png sw.js
         ```
 
     2. Open Chrome `chrome://extensions` and load the zip file.
@@ -22,7 +21,7 @@ Opens external links from installed Chrome apps in the default browser.
     1. Build the extension
 
         ```
-        $ cargo build --release
+        $ cd app/ && cargo build --release
         ```
 
     2. Register native app:
