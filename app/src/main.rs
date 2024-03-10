@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::io::{Read, Write};
+#[cfg(any(target_os = "linux", target_os = "macos"))]
+use std::path::PathBuf;
 
 #[derive(Debug, Serialize)]
 struct Manifest {
