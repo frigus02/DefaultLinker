@@ -7,9 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  ci:
+  linux:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
@@ -19,7 +18,32 @@ jobs:
         working-directory: ./ext
       - uses: actions/upload-artifact@v4
         with:
+          name: app-linux-and-ext
           path: |
             app/target/release/default_linker
             ext/ext.zip
+          if-no-files-found: error
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release
+        working-directory: ./app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-macos
+          path: app/target/release/default_linker
+          if-no-files-found: error
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release
+        working-directory: ./app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-windows
+          path: app/target/release/default_linker.exe
           if-no-files-found: error
