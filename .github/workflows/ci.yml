@@ -7,8 +7,15 @@ on:
     branches: [main]
 
 jobs:
-  linux:
-    runs-on: ubuntu-latest
+  ci:
+    strategy:
+      matrix:
+        os: [ubuntu, macos, windows]
+        include:
+          - app_binary: default_linker
+          - app_binary: default_linker.exe
+            os: windows
+    runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
@@ -16,34 +23,11 @@ jobs:
         working-directory: ./app
       - run: zip ext.zip icon.png manifest.json sw.js
         working-directory: ./ext
+      - run: mv app/target/release/${{ matrix.app_binary }} ext/ext.zip .
       - uses: actions/upload-artifact@v4
         with:
-          name: app-linux-and-ext
+          name: ${{ matrix.os }}
           path: |
-            app/target/release/default_linker
-            ext/ext.zip
-          if-no-files-found: error
-  macos:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - run: cargo build --release
-        working-directory: ./app
-      - uses: actions/upload-artifact@v4
-        with:
-          name: app-macos
-          path: app/target/release/default_linker
-          if-no-files-found: error
-  windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - run: cargo build --release
-        working-directory: ./app
-      - uses: actions/upload-artifact@v4
-        with:
-          name: app-windows
-          path: app/target/release/default_linker.exe
+            ${{ matrix.app_binary }}
+            ext.zip
           if-no-files-found: error
