@@ -5,6 +5,9 @@
     "description": "Opens external links from installed Chrome apps in the default browser.",
     "author": "Jan Kühle",
     "homepage_url": "https://github.com/frigus02/",
+    "icons": {
+        "48": "icon.png"
+    },
     "permissions": ["webNavigation", "nativeMessaging", "tabs"],
     "background": {
         "service_worker": "sw.js"
