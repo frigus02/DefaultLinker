@@ -44,32 +44,42 @@ fn maybe_install() -> Result<bool, BoxError> {
         allowed_origins: vec![format!("chrome-extension://{extension_id}/")],
     };
 
+    #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows")))]
+    return Err("unsupported operating system".into());
+
     #[cfg(target_os = "linux")]
-    {
-        let manifest_path = PathBuf::from(format!(
-            "~/.config/google-chrome/NativeMessagingHosts/{}.json",
-            manifest.name,
-        ));
-        std::fs::write(&manifest_path, serde_json::to_string_pretty(&manifest)?)?;
-        println!("Wrote manifest to {}", manifest_path.display());
+    let manifest_path = PathBuf::from(format!(
+        "{}/.config/google-chrome/NativeMessagingHosts/{}.json",
+        std::env::var("HOME")?,
+        manifest.name,
+    ));
+    #[cfg(target_os = "macos")]
+    let manifest_path = PathBuf::from(format!(
+        "{}/Library/Application Support/Google/Chrome/NativeMessagingHosts/{}.json",
+        std::env::var("HOME")?,
+        manifest.name,
+    ));
+    #[cfg(target_os = "windows")]
+    let manifest_path = {
+        let mut path = path.clone();
+        path.set_file_name("manifest.json");
+        path
+    };
+
+    let manifest_dir = manifest_path.parent().expect("manifest path has parent");
+    if !manifest_dir.is_dir() {
+        return Err(format!(
+            "Directory {} does not exist. Is Chrome installed?",
+            manifest_dir.display()
+        )
+        .into());
     }
 
-    #[cfg(target_os = "macos")]
-    {
-        let manifest_path = PathBuf::from(format!(
-            "~/Library/Application Support/Google/Chrome/NativeMessagingHosts/{}.json",
-            manifest.name,
-        ));
-        std::fs::write(&manifest_path, serde_json::to_string_pretty(&manifest)?)?;
-        println!("Wrote manifest to {}", manifest_path.display());
-    }
+    std::fs::write(&manifest_path, serde_json::to_string_pretty(&manifest)?)?;
+    println!("Wrote manifest to {}", manifest_path.display());
 
     #[cfg(target_os = "windows")]
     {
-        let mut manifest_path = path.clone();
-        manifest_path.set_file_name("manifest.json");
-        std::fs::write(&manifest_path, serde_json::to_string_pretty(&manifest)?)?;
-        println!("Wrote manifest to {}", manifest_path.display());
         println!("Please run the following command to register the manifest:");
         println!(
             "  REG ADD \"HKCU\\Software\\Google\\Chrome\\NativeMessagingHosts\\{}\" /ve /t REG_SZ /d \"{}\" /f",
@@ -77,9 +87,6 @@ fn maybe_install() -> Result<bool, BoxError> {
             manifest_path.display(),
         );
     }
-
-    #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows")))]
-    return Err("unsupported operating system".into());
 
     Ok(true)
 }
