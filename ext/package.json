@@ -1,6 +1,6 @@
 {
   "name": "DefaultLinker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Opens external links from installed Chrome apps in the default browser.",
   "homepage": "https://github.com/frigus02/",
   "license": "MIT",
